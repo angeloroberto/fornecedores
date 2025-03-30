@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+.header,
+.navigation_header{
+    display: flex;
+    flex-direction: row;
+    align-items: center; /*alinha os meus agendamentos com a imgame*/
+}
+
+
+
+.header{
+    background-color: rgba(228, 197, 156);
+    box-shadow: 1px 1px 6px black;
+    height: 6em; /*é o espaço da nav bar*/
+    justify-content: space-between; /*coloca os textos em lados opostos */
+    padding: 0 5%; /*desloca o conteudo para nao ficar grudado no canto da tela */
+}
+
+.navigation_header{
+    gap: 3em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.navigation_header a{
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+}
