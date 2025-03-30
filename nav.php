@@ -15,11 +15,11 @@
             <img src="dicasa_logo_175.png" class="img_nav" alt="">
         </div>
         <div class="navigation_header">
-        <i class="fa-regular fa-calendar-days"><a href="#">  Meus Agendamentos</a></i>
+        <i class="fa-regular fa-calendar-days"><a href="#">  Meus Relatorios</a></i>
 
-        <i class="fa-solid fa-truck-fast"> <a href="#"> Estanceiro</a> </i>
+       <!-- <i class="fa-solid fa-truck-fast"> <a href="#"> Estanceiro</a> </i>
 
-        <i class="fa-regular fa-calendar"> <a href="#">Agendamento</a></i>
+        <i class="fa-regular fa-calendar"> <a href="#">Agendamento</a></i> -->
             
         <i class="fa-sharp fa-solid fa-circle-xmark"> <a href="#">  Sair</a></i>
             
