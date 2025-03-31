@@ -21,7 +21,7 @@
 
         <i class="fa-regular fa-calendar"> <a href="#">Agendamento</a></i> -->
             
-        <i class="fa-sharp fa-solid fa-circle-xmark"> <a href="#">  Sair</a></i>
+        <i class="fa-sharp fa-solid fa-circle-xmark"> <a href="logout.php">  Sair</a></i>
             
         </div>
     </div>

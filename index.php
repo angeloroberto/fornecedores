@@ -12,8 +12,12 @@
        <div class="logo">
         <img src="dicasa_logo_175.png" alt=""> <br><br>
 
-        <form action="agendamento.php" method="post">
-        <input type="text" id="input_usuario" name="input_usuario" placeholder="Usuario" > <br><br>
+        <?php if (isset($_GET['erro']) && $_GET['erro'] == 1): ?>
+        <p style="color: red;">Usuário ou senha inválidos!</p>
+        <?php endif; ?>
+
+        <form action="login.php" method="post">
+        <input type="text" id="input_usuario" name="input_usuario" placeholder="Email" > <br><br>
         <input type="password" placeholder="Senha" name="input_senha"  id="input_senha">
         <br><br>
         <button type="submit">Entrar</button>
