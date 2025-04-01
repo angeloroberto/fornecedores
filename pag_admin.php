@@ -19,7 +19,7 @@
 
 <?php include "nav.php";
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) session_start();
 
 // Se não estiver logado, redireciona
 if (!isset($_SESSION['usuario'])) {
@@ -35,7 +35,8 @@ if ($_SESSION['nivel'] !== 'admin') {
 ?>
 
 <!-- Conteúdo da página restrita -->
-<h1>Bem-vindo, <?php echo $_SESSION['usuario']; ?>!</h1>
+<h2>Bem-vindo, <?php echo $_SESSION['nome']; ?>.</h2>
+<p>Nível de acesso: <?php echo $_SESSION['nivel']; ?></p>
 
     
 
