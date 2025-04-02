@@ -32,7 +32,7 @@ if ($_SESSION['nivel'] !== 'usuario') {
 
 <div class="container mt-5">
 
-    <h2>Bem-vindo, <?php echo $_SESSION['nome']; ?>!</h2>
+    <h5>Bem-vindo, <?php echo $_SESSION['nome']; ?>.</h5>
     <p>Nível de acesso: <?php echo $_SESSION['nivel']; ?></p>
 
     <!-- Exibe conteúdo do Metabase ou outro conteúdo -->

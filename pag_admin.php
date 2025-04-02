@@ -34,15 +34,17 @@ if ($_SESSION['nivel'] !== 'admin') {
 }
 ?>
 
+<div class="container mt-5">
+
 <!-- Conteúdo da página restrita -->
-<h2>Bem-vindo, <?php echo $_SESSION['nome']; ?>.</h2>
+<h5>Bem-vindo, <?php echo $_SESSION['nome']; ?>.</h5>
 <p>Nível de acesso: <?php echo $_SESSION['nivel']; ?></p>
 
     
 
-            <iframe src="https://metabase.dicasaweb.com.br/public/question/32bf7d95-9c08-4342-8d20-0b3e312e596f" frameborder="0"width="800"height="600"allowtransparency></iframe>         
+<iframe    src="https://metabase.dicasaweb.com.br/public/dashboard/f7cd3ff5-2687-4d9c-b9a4-dcda9097e493"    frameborder="0"    width="1300"    height="1200"    allowtransparency></iframe>
 
-            <iframe    src="https://metabase.dicasaweb.com.br/public/question/cdd80c5d-cb44-447a-b2b7-9cb48ea532d5"    frameborder="0"    width="800"    height="600"    allowtransparency></iframe>
+</div>
                         
       
 

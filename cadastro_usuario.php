@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once 'conexao.php';
-include 'nav.php';
 
 // Verifica se está logado e se é admin
 if (!isset($_SESSION['usuario']) || $_SESSION['nivel'] !== 'admin') {
@@ -9,22 +8,6 @@ if (!isset($_SESSION['usuario']) || $_SESSION['nivel'] !== 'admin') {
     exit;
 }
 
-// Se o formulário for enviado
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nome  = $conexao->real_escape_string($_POST['nome']);
-    $email = $conexao->real_escape_string($_POST['email']);
-    $senha = md5($_POST['senha']); // ⚠️ Use password_hash em produção
-    $nivel = $conexao->real_escape_string($_POST['nivel']);
-
-    $sql = "INSERT INTO usuarios (nome, email, senha, nivel)
-            VALUES ('$nome', '$email', '$senha', '$nivel')";
-
-    if ($conexao->query($sql) === TRUE) {
-        $mensagem = "Usuário cadastrado com sucesso!";
-    } else {
-        $mensagem = "Erro ao cadastrar usuário: " . $conexao->error;
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -33,15 +16,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>Cadastro de Usuário</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="agendamento.css">
+   
 </head>
-<body class="container mt-5">
+<body> 
+<?php include 'nav.php'; ?> <!-- Nav incluído DENTRO do body para ficar padronizado -->
+
+<div class="container mt-5">
     <h2>Cadastro de Usuário</h2>
 
-    <?php if (!empty($mensagem)): ?>
-        <div class="alert alert-info"><?php echo $mensagem; ?></div>
+    <?php if (isset($_GET['sucesso'])): ?>
+        <div class="alert alert-success">Usuário cadastrado com sucesso!</div>
+    <?php elseif (isset($_GET['erro'])): ?>
+        <div class="alert alert-danger">Erro ao cadastrar usuário.</div>
     <?php endif; ?>
 
-    <form method="POST" action="">
+    <form method="POST" action="envio_cadastro.php">
         <div class="form-group">
             <label>Nome</label>
             <input type="text" name="nome" class="form-control" required>
@@ -62,9 +52,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <a href="pag_admin.php" class="btn btn-secondary ml-2">Voltar</a>
     </form>
+</div>
 
-    <br>
-    <a href="pag_admin.php" class="btn btn-secondary">Voltar</a>
+   
+
+    
 </body>
 </html>

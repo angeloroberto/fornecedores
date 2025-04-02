@@ -14,11 +14,11 @@
 <body>
     <div class="header">
         <div class="logo_header">
-            <img src="dicasa_logo_175.png" class="img_nav" alt="">
+            <img src="dicasa_logo_175.png" class="img_nav" ahref alt="">
         </div>
         <div class="navigation_header">
             <?php if (isset($_SESSION['nivel']) && $_SESSION['nivel'] === 'admin'): ?>
-                <i class="fa-regular fa-calendar-days"><a href="cadastro_usuario.php"> Cadastro</a></i>
+                <i class="fa-solid fa-address-book"><a href="cadastro_usuario.php"> Cadastro</a></i>
             <?php endif; ?>
 
             <i class="fa-sharp fa-solid fa-circle-xmark"> <a href="logout.php"> Sair</a></i>

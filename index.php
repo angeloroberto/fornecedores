@@ -17,7 +17,7 @@
         <?php endif; ?>
 
         <form action="login.php" method="post">
-        <input type="text" id="input_usuario" name="input_usuario" placeholder="Email" > <br><br>
+        <input type="email" id="input_usuario" name="input_usuario" placeholder="Email" > <br><br>
         <input type="password" placeholder="Senha" name="input_senha"  id="input_senha">
         <br><br>
         <button type="submit">Entrar</button>
