@@ -8,6 +8,14 @@ if (!isset($_SESSION['usuario']) || $_SESSION['nivel'] !== 'admin') {
     exit;
 }
 
+// Carrega marcas do banco
+$marcas = [];
+$result = $conexao->query("SELECT id, nome FROM marcas ORDER BY nome ASC");
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        $marcas[] = $row;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,10 +25,20 @@ if (!isset($_SESSION['usuario']) || $_SESSION['nivel'] !== 'admin') {
     <title>Cadastro de Usuário</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="agendamento.css">
-   
+    <script>
+        function verificarNivel() {
+            var nivel = document.getElementById("nivel").value;
+            var marcaDiv = document.getElementById("div-marca");
+            marcaDiv.style.display = (nivel === "usuario") ? "block" : "none";
+        }
+
+        window.onload = function () {
+            verificarNivel();
+        };
+    </script>
 </head>
 <body> 
-<?php include 'nav.php'; ?> <!-- Nav incluído DENTRO do body para ficar padronizado -->
+<?php include 'nav.php'; ?>
 
 <div class="container mt-5">
     <h2>Cadastro de Usuário</h2>
@@ -46,18 +64,28 @@ if (!isset($_SESSION['usuario']) || $_SESSION['nivel'] !== 'admin') {
         </div>
         <div class="form-group">
             <label>Nível de Acesso</label>
-            <select name="nivel" class="form-control" required>
+            <select name="nivel" id="nivel" class="form-control" onchange="verificarNivel()" required>
+                <option value="">Selecione</option>
                 <option value="usuario">Usuário</option>
                 <option value="admin">Administrador</option>
             </select>
         </div>
+
+        <div id="div-marca" class="form-group" style="display:none;">
+            <label>Marca</label>
+            <select name="marca_id" class="form-control">
+                <option value="">Selecione a marca</option>
+                <?php foreach ($marcas as $marca): ?>
+                    <option value="<?= $marca['id'] ?>"><?= htmlspecialchars($marca['nome']) ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+
         <button type="submit" class="btn btn-primary">Cadastrar</button>
         <a href="pag_admin.php" class="btn btn-secondary ml-2">Voltar</a>
+        <a href="ver_cadastro.php" class="btn btn-info ml-2">Ver Usuários</a>
+        
     </form>
 </div>
-
-   
-
-    
 </body>
 </html>
